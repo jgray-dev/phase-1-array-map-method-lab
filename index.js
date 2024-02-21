@@ -11,22 +11,16 @@ const tutorials = [
     'what is JSONP?'
 ];
 
-
-
 function titleCased() {
     return tutorials.map((title)=> {
-        const eachtitle = title.split("")
-        const titleSpaces = []
-        for (let i = 0; i < eachtitle.length; i++) {
-            if (eachtitle[i] === " ") {
-                titleSpaces.push(i)
-            }
-        }
-        for (let i = 0; i < titleSpaces.length; i++) {
-            eachtitle[(titleSpaces[i]+1)] = eachtitle[(titleSpaces[i]+1)].toUpperCase()
-        }
-        eachtitle[0] = eachtitle[0].toUpperCase()
-        const newstring = eachtitle.join("")
-        return newstring
+        let splittitle = title.split(" ")
+        splittitle.forEach((word, index)=> {
+            word = word.split("")
+            word[0] = word[0].toUpperCase()
+            index !== splittitle.length-1 ? word.push(" ") : undefined
+            splittitle[index] = word.join("")
+        })
+        return splittitle.join("")
     })
 }
+
